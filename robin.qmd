@@ -1,0 +1,66 @@
+---
+title: "robin"
+execute:
+    echo: false
+    message: false
+---
+
+```{r}
+#| message: false
+library(tidytext)
+library(dplyr)
+library(stringr)
+library(readr)
+library(tidyr)
+```
+```{r}
+#| message: false
+dirt <-  "~/Documents/final0/data/robin.txt"
+```
+
+```{r}
+#| message: false
+afinn <- get_sentiments("afinn")
+
+positive <- get_sentiments("afinn") |> filter(value>0)
+
+negative <- get_sentiments("afinn") |> filter(value<0)
+
+lines <- read_lines(dirt) 
+dir <- tibble(text=lines)
+```
+
+```{r}
+#| message: false
+tidy_book <- dir %>% mutate(
+    linenumber = row_number(),
+    chapter = cumsum(str_detect(text, regex("^chapter [ivxlc]+", ignore_case = TRUE)))) %>%
+      unnest_tokens(word, text) %>% filter(chapter>0)
+```
+
+```{r}
+#| message: false
+sentiments_pos <- tidy_book %>%
+  inner_join(positive) %>%
+  count(word, sort = TRUE)
+
+sentiments_neg <-tidy_book %>%
+  inner_join(negative) %>%
+  count(word, sort = TRUE)
+
+
+word_scores <- tidy_book %>%
+  count(word, sort = TRUE)
+word_sentiments <- get_sentiments("afinn")
+word_sentiment_data <- word_scores %>% left_join(word_sentiments, by = "word") |> mutate(word_avg_sent = n * value) %>% drop_na()
+                                                     
+```
+
+
+```{r}
+#| message: false
+library(ggplot2)
+
+word_sentiment_data |> ggplot(aes(word, word_avg_sent)) + geom_col() + scale_x_discrete(labels = NULL) 
+```
+

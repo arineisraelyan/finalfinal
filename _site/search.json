@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "final0",
+    "section": "",
+    "text": "Attaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n\n\nJoining with `by = join_by(word)`\nJoining with `by = join_by(word)`\n\n\n# A tibble: 882 × 4\n   word       n value word_avg_sent\n   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;         &lt;dbl&gt;\n 1 no       276    -1          -276\n 2 like     127     2           254\n 3 good     108     3           324\n 4 yes       74     1            74\n 5 dead      69    -3          -207\n 6 great     68     3           204\n 7 want      61     1            61\n 8 poor      56    -2          -112\n 9 awful     41    -3          -123\n10 better    40     2            80\n# ℹ 872 more rows"
+  },
+  {
+    "objectID": "test.html",
+    "href": "test.html",
+    "title": "Test",
+    "section": "",
+    "text": "library(tidytext)\n\nget_sentiments(\"afinn\")\n\n# A tibble: 2,477 × 2\n   word       value\n   &lt;chr&gt;      &lt;dbl&gt;\n 1 abandon       -2\n 2 abandoned     -2\n 3 abandons      -2\n 4 abducted      -2\n 5 abduction     -2\n 6 abductions    -2\n 7 abhor         -3\n 8 abhorred      -3\n 9 abhorrent     -3\n10 abhors        -3\n# ℹ 2,467 more rows\n\n\n\nget_sentiments(\"bing\")\n\n# A tibble: 6,786 × 2\n   word        sentiment\n   &lt;chr&gt;       &lt;chr&gt;    \n 1 2-faces     negative \n 2 abnormal    negative \n 3 abolish     negative \n 4 abominable  negative \n 5 abominably  negative \n 6 abominate   negative \n 7 abomination negative \n 8 abort       negative \n 9 aborted     negative \n10 aborts      negative \n# ℹ 6,776 more rows\n\n\n\nget_sentiments(\"nrc\")\n\n# A tibble: 13,872 × 2\n   word        sentiment\n   &lt;chr&gt;       &lt;chr&gt;    \n 1 abacus      trust    \n 2 abandon     fear     \n 3 abandon     negative \n 4 abandon     sadness  \n 5 abandoned   anger    \n 6 abandoned   fear     \n 7 abandoned   negative \n 8 abandoned   sadness  \n 9 abandonment anger    \n10 abandonment fear     \n# ℹ 13,862 more rows\n\n\n\nlibrary(janeaustenr)\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(stringr)\n\ntidy_books &lt;- austen_books() %&gt;%\n  group_by(book) %&gt;%\n  mutate(\n    linenumber = row_number(),\n    chapter = cumsum(str_detect(text, \n                                regex(\"^chapter [\\\\divxlc]\", \n                                      ignore_case = TRUE)))) %&gt;%\n  ungroup() %&gt;%\n  unnest_tokens(word, text)\n\n\nnrc_joy &lt;- get_sentiments(\"nrc\") %&gt;% \n  filter(sentiment == \"joy\")\n\ntidy_books %&gt;%\n  filter(book == \"Emma\") %&gt;%\n  inner_join(nrc_joy) %&gt;%\n  count(word, sort = TRUE)\n\nJoining with `by = join_by(word)`\n\n\n# A tibble: 301 × 2\n   word          n\n   &lt;chr&gt;     &lt;int&gt;\n 1 good        359\n 2 friend      166\n 3 hope        143\n 4 happy       125\n 5 love        117\n 6 deal         92\n 7 found        92\n 8 present      89\n 9 kind         82\n10 happiness    76\n# ℹ 291 more rows\n\n\n\nlibrary(tidyr)\n\njane_austen_sentiment &lt;- tidy_books %&gt;%\n  inner_join(get_sentiments(\"bing\")) %&gt;%\n  count(book, index = linenumber %/% 80, sentiment) %&gt;%\n  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %&gt;% \n  mutate(sentiment = positive - negative)\n\nJoining with `by = join_by(word)`\n\n\nWarning in inner_join(., get_sentiments(\"bing\")): Detected an unexpected many-to-many relationship between `x` and `y`.\nℹ Row 435434 of `x` matches multiple rows in `y`.\nℹ Row 5051 of `y` matches multiple rows in `x`.\nℹ If a many-to-many relationship is expected, set `relationship =\n  \"many-to-many\"` to silence this warning.\n\n\n\nlibrary(ggplot2)\n\nggplot(jane_austen_sentiment, aes(index, sentiment, fill = book)) +\n  geom_col(show.legend = FALSE) +\n  facet_wrap(~book, ncol = 2, scales = \"free_x\")"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "tom-sawyer.html",
+    "href": "tom-sawyer.html",
+    "title": "tom-sawyer",
+    "section": "",
+    "text": "Attaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union"
+  },
+  {
+    "objectID": "anna-karenina.html",
+    "href": "anna-karenina.html",
+    "title": "anna-karenina",
+    "section": "",
+    "text": "# A tibble: 383 × 4\n   word        n value word_avg_sent\n   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt;         &lt;dbl&gt;\n 1 no         72    -1           -72\n 2 yes        43     1            43\n 3 good       41     3           123\n 4 love       40     3           120\n 5 smile      36     2            72\n 6 like       27     2            54\n 7 feeling    13     1            13\n 8 want       13     1            13\n 9 awful      11    -3           -33\n10 better     11     2            22\n# ℹ 373 more rows"
+  },
+  {
+    "objectID": "war_peace.html",
+    "href": "war_peace.html",
+    "title": "war-peace",
+    "section": "",
+    "text": "# A tibble: 597 × 4\n   word        n value word_avg_sent\n   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt;         &lt;dbl&gt;\n 1 no         92    -1           -92\n 2 dear       86     2           172\n 3 smile      67     2           134\n 4 like       61     2           122\n 5 yes        44     1            44\n 6 good       35     3           105\n 7 smiling    27     2            54\n 8 smiled     24     2            48\n 9 great      23     3            69\n10 leave      20    -1           -20\n# ℹ 587 more rows"
+  }
+]

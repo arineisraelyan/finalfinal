@@ -1,0 +1,28 @@
+project:
+  type: website
+
+website:
+  title: "Project Title"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: tom-sawyer.qmd
+      - href: war-peace.qmd
+      - href: white-fang.qmd
+      - href: robin.qmd
+      - href: oliver-twist.qmd
+      - href: anna-karenina.qmd
+      - href: murder.qmd
+      - href: little-women.qmd
+      - href: captain-daughter.qmd
+      - about.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

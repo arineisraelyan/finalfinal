@@ -1,5 +1,5 @@
 ---
-title: "final0"
+title: "Sentiment analysis of narratives"
 execute:
     echo: false
     message: false

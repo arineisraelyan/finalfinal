@@ -15,44 +15,49 @@ library(tidyr)
 ```
 ```{r}
 #| message: false
-dirt <-  "~/Documents/final0/data/robin.txt"
+dirt_robin <-  "~/Desktop/finalfinal/data/robin.txt"
 ```
 
 ```{r}
 #| message: false
 afinn <- get_sentiments("afinn")
 
-positive <- get_sentiments("afinn") |> filter(value>0)
+positive <- get_sentiments("afinn") |> filter(value > 0)
 
-negative <- get_sentiments("afinn") |> filter(value<0)
+negative <- get_sentiments("afinn") |> filter(value < 0)
 
-lines <- read_lines(dirt) 
-dir <- tibble(text=lines)
+lines_robin <- read_lines(dirt_robin) 
+dir_robin <- tibble(text = lines_robin)
 ```
 
 ```{r}
 #| message: false
-tidy_book <- dir %>% mutate(
+tidy_book_robin <- dir_robin %>%
+  mutate(
     linenumber = row_number(),
-    chapter = cumsum(str_detect(text, regex("^chapter [ivxlc]+", ignore_case = TRUE)))) %>%
-      unnest_tokens(word, text) %>% filter(chapter>0)
+    chapter = cumsum(str_detect(text, regex("^chapter [ivxlc]+", ignore_case = TRUE)))
+  ) %>%
+  unnest_tokens(word, text) %>%
+  filter(chapter > 0)
 ```
 
 ```{r}
 #| message: false
-sentiments_pos <- tidy_book %>%
+sentiments_pos_robin <- tidy_book_robin %>%
   inner_join(positive) %>%
   count(word, sort = TRUE)
 
-sentiments_neg <-tidy_book %>%
+sentiments_neg_robin <- tidy_book_robin %>%
   inner_join(negative) %>%
   count(word, sort = TRUE)
 
-
-word_scores <- tidy_book %>%
+word_scores_robin <- tidy_book_robin %>%
   count(word, sort = TRUE)
-word_sentiments <- get_sentiments("afinn")
-word_sentiment_data <- word_scores %>% left_join(word_sentiments, by = "word") |> mutate(word_avg_sent = n * value) %>% drop_na()
+
+word_sentiment_data_robin <- word_scores_robin %>%
+  left_join(get_sentiments("afinn"), by = "word") %>%
+  mutate(word_avg_sent = n * value) %>%
+  drop_na()
                                                      
 ```
 
@@ -61,6 +66,10 @@ word_sentiment_data <- word_scores %>% left_join(word_sentiments, by = "word") |
 #| message: false
 library(ggplot2)
 
-word_sentiment_data |> ggplot(aes(word, word_avg_sent)) + geom_col() + scale_x_discrete(labels = NULL) 
+
+word_sentiment_data_robin |> 
+  ggplot(aes(word, word_avg_sent)) + 
+  geom_col() + 
+  scale_x_discrete(labels = NULL)
 ```
 

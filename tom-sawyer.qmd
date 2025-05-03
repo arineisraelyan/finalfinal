@@ -14,44 +14,49 @@ library(readr)
 library(tidyr)
 ```
 ```{r}
-dirt <-  "~/Documents/final0/data/tom-sawyer.txt"
+dirt_tom_sawyer <-  "~/Desktop/finalfinal/data/tom-sawyer.txt"
 ```
 
 ```{r}
 #| message: false
 afinn <- get_sentiments("afinn")
 
-positive <- get_sentiments("afinn") |> filter(value>0)
+positive <- get_sentiments("afinn") |> filter(value > 0)
 
-negative <- get_sentiments("afinn") |> filter(value<0)
+negative <- get_sentiments("afinn") |> filter(value < 0)
 
-lines <- read_lines(dirt) 
-dir <- tibble(text=lines)
+lines_tom_sawyer <- read_lines(dirt_tom_sawyer) 
+dir_tom_sawyer <- tibble(text = lines_tom_sawyer)
 ```
 
 ```{r}
 #| message: false
-tidy_book <- dir %>% mutate(
+tidy_book_tom_sawyer <- dir_tom_sawyer %>%
+  mutate(
     linenumber = row_number(),
-    chapter = cumsum(str_detect(text, regex("^chapter [ivxlc]+", ignore_case = TRUE)))) %>%
-      unnest_tokens(word, text) %>% filter(chapter>0)
+    chapter = cumsum(str_detect(text, regex("^chapter [ivxlc]+", ignore_case = TRUE)))
+  ) %>%
+  unnest_tokens(word, text) %>%
+  filter(chapter > 0)
 ```
 
 ```{r}
 #| message: false
-sentiments_pos <- tidy_book %>%
+sentiments_pos_tom_sawyer <- tidy_book_tom_sawyer %>%
   inner_join(positive) %>%
   count(word, sort = TRUE)
 
-sentiments_neg <-tidy_book %>%
+sentiments_neg_tom_sawyer <- tidy_book_tom_sawyer %>%
   inner_join(negative) %>%
   count(word, sort = TRUE)
 
-
-word_scores <- tidy_book %>%
+word_scores_tom_sawyer <- tidy_book_tom_sawyer %>%
   count(word, sort = TRUE)
-word_sentiments <- get_sentiments("afinn")
-word_sentiment_data <- word_scores %>% left_join(word_sentiments, by = "word") |> mutate(word_avg_sent = n * value) %>% drop_na()
+
+word_sentiment_data_tom_sawyer <- word_scores_tom_sawyer %>%
+  left_join(get_sentiments("afinn"), by = "word") %>%
+  mutate(word_avg_sent = n * value) %>%
+  drop_na()
 ```
 
 
@@ -59,6 +64,9 @@ word_sentiment_data <- word_scores %>% left_join(word_sentiments, by = "word") |
 #| message: false
 library(ggplot2)
 
-word_sentiment_data |> ggplot(aes(word, word_avg_sent)) + geom_col() + scale_x_discrete(labels = NULL) 
+word_sentiment_data_tom_sawyer |> 
+  ggplot(aes(word, word_avg_sent)) + 
+  geom_col() + 
+  scale_x_discrete(labels = NULL)
 ```
 

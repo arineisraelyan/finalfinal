@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "final0",
     "section": "",
-    "text": "Attaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n\n\nJoining with `by = join_by(word)`\nJoining with `by = join_by(word)`\n\n\n# A tibble: 882 × 4\n   word       n value word_avg_sent\n   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;         &lt;dbl&gt;\n 1 no       276    -1          -276\n 2 like     127     2           254\n 3 good     108     3           324\n 4 yes       74     1            74\n 5 dead      69    -3          -207\n 6 great     68     3           204\n 7 want      61     1            61\n 8 poor      56    -2          -112\n 9 awful     41    -3          -123\n10 better    40     2            80\n# ℹ 872 more rows"
+    "text": "Attaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n\n\n# A tibble: 882 × 4\n   word       n value word_avg_sent\n   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;         &lt;dbl&gt;\n 1 no       276    -1          -276\n 2 like     127     2           254\n 3 good     108     3           324\n 4 yes       74     1            74\n 5 dead      69    -3          -207\n 6 great     68     3           204\n 7 want      61     1            61\n 8 poor      56    -2          -112\n 9 awful     41    -3          -123\n10 better    40     2            80\n# ℹ 872 more rows"
   },
   {
     "objectID": "test.html",
@@ -40,5 +40,12 @@
     "title": "war-peace",
     "section": "",
     "text": "# A tibble: 597 × 4\n   word        n value word_avg_sent\n   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt;         &lt;dbl&gt;\n 1 no         92    -1           -92\n 2 dear       86     2           172\n 3 smile      67     2           134\n 4 like       61     2           122\n 5 yes        44     1            44\n 6 good       35     3           105\n 7 smiling    27     2            54\n 8 smiled     24     2            48\n 9 great      23     3            69\n10 leave      20    -1           -20\n# ℹ 587 more rows"
+  },
+  {
+    "objectID": "little-women.html",
+    "href": "little-women.html",
+    "title": "little-women",
+    "section": "",
+    "text": "Joining with `by = join_by(word)`\nJoining with `by = join_by(word)`"
   }
 ]

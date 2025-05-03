@@ -7,17 +7,34 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: tom-sawyer.qmd
-      - href: war-peace.qmd
-      - href: white-fang.qmd
-      - href: robin.qmd
-      - href: oliver-twist.qmd
+        # Leo Tolstoy
       - href: anna-karenina.qmd
-      - href: murder.qmd
+        text: Anna Karenina
+      - href: war-peace.qmd
+        text: War and Peace
+        # Louisa May Alcott
       - href: little-women.qmd
+        text: Little Women
+        # Agatha Christie
+      - href: murder.qmd
+        text: Murder on the Orient Express
+        # Charles Dickens
+      - href: oliver-twist.qmd
+        text: Oliver Twist
+        # Daniel Defoe
+      - href: robin.qmd
+        text: Robinson Crusoe
+        # Alexander Pushkin
       - href: captain-daughter.qmd
+        text: The Captain's Daughter
+        # Mark Twain
+      - href: tom-sawyer.qmd
+        text: The Adventures of Tom Sawyer
+        # Jack London
+      - href: white-fang.qmd
+        text: White Fang
       - about.qmd
-
+      
 format:
   html:
     theme: cosmo

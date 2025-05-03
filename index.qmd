@@ -14,62 +14,137 @@ library(tidyr)
 ```
 
 ```{r}
-dir1t <-  "~/Documents/final0/data/anna-karenina.txt"
-dir2t <- "~/Documents/final0/data/tom-sawyer.txt"
-dir3t <- "~/Documents/final0/data/war-peace.txt"
-dir4t <-  "~/Documents/final0/data/captain-daughter.txt"
-dir5t <- "~/Documents/final0/data/little-women.txt"
-dir6t <- "~/Documents/final0/data/murder.txt"
-dir7t <- "~/Documents/final0/data/oliver-twist.txt"
-dir8t <- "~/Documents/final0/data/white-fang.txt"
-dir9t <- "~/Documents/final0/data/robin.txt"
+#| message: false
+dir1t <-  "~/Desktop/finalfinal/data/anna-karenina.txt"
+dir2t <- "~/Desktop/finalfinal/data/tom-sawyer.txt"
+dir3t <- "~/Desktop/finalfinal/data/war-peace.txt"
+dir4t <-  "~/Desktop/finalfinal/data/captain-daughter.txt"
+dir5t <- "~/Desktop/finalfinal/data/little-women.txt"
+dir6t <- "~/Desktop/finalfinal/data/murder.txt"
+dir7t <- "~/Desktop/finalfinal/data/oliver-twist.txt"
+dir8t <- "~/Desktop/finalfinal/data/white-fang.txt"
+dir9t <- "~/Desktop/finalfinal/data/robin.txt"
+
+library(tibble)
+
+narratives <- tibble(
+  narrative = c(
+    "Anna Karenina",
+    "Little Women",
+    "Murder on the Orient Express",
+    "Oliver Twist",
+    "Robinson Crusoe",
+    "The Captain's Daughter",
+    "The Adventures of Tom Sawyer",
+    "War and Peace",
+    "White Fang"
+  ),
+  author = c(
+    "Leo Tolstoy",
+    "Louisa May Alcott",
+    "Agatha Christie",
+    "Charles Dickens",
+    "Daniel Defoe",
+    "Alexander Pushkin",
+    "Mark Twain",
+    "Leo Tolstoy",
+    "Jack London"
+  ),
+  country = c(
+    "Russia",
+    "United States",
+    "England",
+    "England",
+    "England",
+    "Russia",
+    "United States",
+    "Russia",
+    "United States"
+  ),
+  birth_year = c(
+    1828,
+    1832,
+    1890,
+    1812,
+    1660,  # approximate
+    1799,
+    1835,
+    1828,
+    1876
+  ),
+  death_year = c(
+    1910,
+    1888,
+    1976,
+    1870,
+    1731,
+    1837,
+    1910,
+    1910,
+    1916
+  ),
+  century = c(
+    19,
+    19,
+    20,
+    19,
+    17, 
+    19,
+    19,
+    19,
+    19
+  )
+)
 ```
 
 ```{r}
-afinn <- get_sentiments("afinn")
-
-positive <- get_sentiments("afinn") |> filter(value>0)
-
-negative <- get_sentiments("afinn") |> filter(value<0)
-
-lines1 <- read_lines(dir1t) 
-dir1 <- tibble(text=lines1)
-lines2 <- read_lines(dir2t) 
-dir2 <- tibble(text=lines2)
-lines3 <- read_lines(dir3t)
-dir3 <- tibble(text=lines3)
+#| message: false
+# afinn <- get_sentiments("afinn")
+# 
+# positive <- get_sentiments("afinn") |> filter(value>0)
+# 
+# negative <- get_sentiments("afinn") |> filter(value<0)
+# 
+# lines1 <- read_lines(dir1t) 
+# dir1 <- tibble(text=lines1)
+# lines2 <- read_lines(dir2t) 
+# dir2 <- tibble(text=lines2)
+# lines3 <- read_lines(dir3t)
+# dir3 <- tibble(text=lines3)
 ```
 
 ```{r}
-tidy_book1 <- dir2 %>% mutate(
-    linenumber = row_number(),
-    chapter = cumsum(str_detect(text, regex("^chapter [ivxlc]+", ignore_case = TRUE)))) %>%
-      unnest_tokens(word, text) %>% filter(chapter>0)
+#| message: false
+# tidy_book1 <- dir2 %>% mutate(
+#     linenumber = row_number(),
+#     chapter = cumsum(str_detect(text, regex("^chapter [ivxlc]+", ignore_case = TRUE)))) %>%
+#       unnest_tokens(word, text) %>% filter(chapter>0)
 ```
 
 ```{r}
-sentiments1_pos <- tidy_book1 %>%
-  inner_join(positive) %>%
-  count(word, sort = TRUE)
-
-sentiments1_neg <-tidy_book1 %>%
-  inner_join(negative) %>%
-  count(word, sort = TRUE)
-
-
-word_scores <- tidy_book1 %>%
-  count(word, sort = TRUE)
-word_sentiments <- get_sentiments("afinn")
-word_sentiment_data <- word_scores %>% left_join(word_sentiments, by = "word") |> mutate(word_avg_sent = n * value) %>% drop_na()
-                                                     
-word_sentiment_data
+#| message: false
+# sentiments1_pos <- tidy_book1 %>%
+#   inner_join(positive) %>%
+#   count(word, sort = TRUE)
+# 
+# sentiments1_neg <-tidy_book1 %>%
+#   inner_join(negative) %>%
+#   count(word, sort = TRUE)
+# 
+# 
+# word_scores <- tidy_book1 %>%
+#   count(word, sort = TRUE)
+# word_sentiments <- get_sentiments("afinn")
+# word_sentiment_data <- word_scores %>% left_join(word_sentiments, by = "word") |> mutate(word_avg_sent = n * value) %>% drop_na()
+                                                    
 ```
 
 
 ```{r}
-library(ggplot2)
-
-word_sentiment_data |> ggplot(aes(word, word_avg_sent)) + geom_col() + scale_x_discrete(labels = NULL) 
+#| message: false
+# library(ggplot2)
+# 
+# word_sentiment_data |> ggplot(aes(word, word_avg_sent)) + geom_col() + scale_x_discrete(labels = NULL) 
 ```
 
 

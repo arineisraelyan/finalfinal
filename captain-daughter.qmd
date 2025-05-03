@@ -15,7 +15,7 @@ library(tidyr)
 ```
 ```{r}
 #| message: false
-dirt <-  "~/Documents/final0/data/captain-daughter.txt"
+dirt <-  "~/Desktop/finalfinal/data/captain-daughter.txt"
 ```
 
 ```{r}

@@ -39,6 +39,9 @@ tidy_book_murder <- dir_murder %>%
   ) %>%
   unnest_tokens(word, text) %>%
   filter(chapter > 0)
+
+tidy_book_murder <- tidy_book_murder %>%
+  left_join(get_sentiments("afinn"), by = "word")
 ```
 
 ```{r}
@@ -65,10 +68,64 @@ word_sentiment_data_murder <- word_scores_murder %>%
 #| message: false
 library(ggplot2)
 
-
 word_sentiment_data_murder |> 
-  ggplot(aes(word, word_avg_sent)) + 
+  ggplot(aes(word, word_avg_sent, color="red")) + 
   geom_col() + 
   scale_x_discrete(labels = NULL)
 ```
+
+
+```{r}
+#| message: false
+chapter_info_murder <- tidy_book_murder %>%
+  select(chapter, linenumber, word) %>% 
+  distinct()
+
+chapter_sentiment_murder <- tidy_book_murder %>%
+  group_by(chapter) %>%
+  summarise(median_sentiment = median(value, na.rm = TRUE))
+
+tidy_book_sentiment_murder <- tidy_book_murder %>%
+  select(-value) %>%  
+  left_join(get_sentiments("afinn"), by = "word") %>%
+  drop_na(value)
+
+chapter_sentiment_murder <- tidy_book_sentiment_murder %>%
+  group_by(chapter) %>%
+    summarise(median_sentiment = median(value, na.rm = TRUE))
+```
+
+
+```{r}
+#| message: false
+install.packages("plotly", repos = "https://cran.rstudio.com")
+library(plotly)
+library(gapminder)
+
+p <- chapter_sentiment_murder %>%
+  ggplot(aes(x = chapter, y = median_sentiment, color="red")) +
+  geom_point(color = "steelblue", size = 3) +
+  geom_line(color = "steelblue") +
+  labs(title = "Median Sentiment by Chapter",
+       x = "Chapter",
+       y = "Median Sentiment") +
+  theme_minimal()
+
+ggplotly(p)
+```
+
+```{r} 
+#| message: false
+library(dplyr)
+library(tidytext)
+library(reshape2)
+library(wordcloud)
+
+tidy_book_murder %>%
+  inner_join(get_sentiments("bing"), by = "word") %>%
+  count(word, sentiment, sort = TRUE) %>%
+  acast(word ~ sentiment, value.var = "n", fill = 0) %>%
+  comparison.cloud(colors = c("#bd3e2f", "#769e6d"), max.words = 250)
+```
+
 

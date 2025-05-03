@@ -32,7 +32,7 @@
     "href": "anna-karenina.html",
     "title": "anna-karenina",
     "section": "",
-    "text": "# A tibble: 383 × 4\n   word        n value word_avg_sent\n   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt;         &lt;dbl&gt;\n 1 no         72    -1           -72\n 2 yes        43     1            43\n 3 good       41     3           123\n 4 love       40     3           120\n 5 smile      36     2            72\n 6 like       27     2            54\n 7 feeling    13     1            13\n 8 want       13     1            13\n 9 awful      11    -3           -33\n10 better     11     2            22\n# ℹ 373 more rows"
+    "text": "Attaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout"
   },
   {
     "objectID": "war_peace.html",
@@ -46,6 +46,13 @@
     "href": "little-women.html",
     "title": "little-women",
     "section": "",
-    "text": "Joining with `by = join_by(word)`\nJoining with `by = join_by(word)`"
+    "text": "Attaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout"
+  },
+  {
+    "objectID": "murder.html",
+    "href": "murder.html",
+    "title": "murder",
+    "section": "",
+    "text": "The downloaded binary packages are in\n    /var/folders/31/gjl12q7d0bs02gcv2n1xgxym0000gp/T//Rtmp2i5wHx/downloaded_packages"
   }
 ]

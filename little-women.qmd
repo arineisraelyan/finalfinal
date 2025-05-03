@@ -51,6 +51,9 @@ tidy_book_little_women <- dir_little_women %>%
   ) %>%
   unnest_tokens(word, text) %>%
   filter(chapter > 0) 
+
+tidy_book_little_women <- tidy_book_little_women %>%
+  left_join(get_sentiments("afinn"), by = "word")
 ```
 
 
@@ -82,5 +85,34 @@ word_sentiment_data_little_women |>
   ggplot(aes(word, word_avg_sent)) + 
   geom_col() + 
   scale_x_discrete(labels = NULL)
+```
+
+```{r}
+#| message: false
+tidy_book_sentiment_little <- tidy_book_little_women %>%
+  select(-value) %>%
+  left_join(get_sentiments("afinn"), by = "word") %>%
+  drop_na(value)
+
+chapter_sentiment_little <- tidy_book_sentiment_little %>%
+  group_by(chapter) %>%
+  summarise(median_sentiment = median(value, na.rm = TRUE))
+```
+
+```{r}
+#| message: false
+library(ggplot2)
+library(plotly)
+
+p <- chapter_sentiment_little %>%
+  ggplot(aes(x = chapter, y = median_sentiment)) +
+  geom_point(color = "darkgreen", size = 3) +
+  geom_line(color = "darkgreen") +
+  labs(title = "Median Sentiment by Chapter – Little Women",
+       x = "Chapter",
+       y = "Median Sentiment (AFINN)") +
+  theme_minimal()
+
+ggplotly(p)
 ```
 

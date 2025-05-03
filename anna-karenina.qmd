@@ -39,6 +39,9 @@ tidy_book_anna_karenina <- dir_anna_karenina %>%
   ) %>%
   unnest_tokens(word, text) %>%
   filter(chapter > 0)
+
+tidy_book_anna_karenina <- tidy_book_anna_karenina %>%
+  left_join(get_sentiments("afinn"), by = "word")
 ```
 
 ```{r}
@@ -60,7 +63,6 @@ word_sentiment_data_anna_karenina <- word_scores_anna_karenina %>%
   drop_na()
 ```
 
-
 ```{r}
 #| message: false
 library(ggplot2)
@@ -70,4 +72,34 @@ word_sentiment_data_anna_karenina |>
   geom_col() + 
   scale_x_discrete(labels = NULL)
 ```
+
+```{r}
+#| message: false
+tidy_book_sentiment_anna <- tidy_book_anna_karenina %>%
+  select(-value) %>%
+  left_join(get_sentiments("afinn"), by = "word") %>%
+  drop_na(value)
+
+chapter_sentiment_anna <- tidy_book_sentiment_anna %>%
+  group_by(chapter) %>%
+  summarise(median_sentiment = median(value, na.rm = TRUE))
+
+library(ggplot2)
+library(plotly)
+```
+
+```{r}
+#| message: false
+p <- chapter_sentiment_anna %>%
+  ggplot(aes(x = chapter, y = median_sentiment)) +
+  geom_point(color = "firebrick", size = 3) +
+  geom_line(color = "firebrick") +
+  labs(title = "Median Sentiment by Chapter – Anna Karenina",
+       x = "Chapter",
+       y = "Median Sentiment") +
+  theme_minimal()
+
+ggplotly(p)
+```
+
 

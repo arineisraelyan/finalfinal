@@ -1,5 +1,5 @@
 ---
-title: "captain-daughter"
+title: "The Captain's Daughter"
 execute:
     echo: false
     message: false
@@ -39,6 +39,9 @@ tidy_book_captain_daughter <- dir_captain_daughter %>%
   ) %>%
   unnest_tokens(word, text) %>%
   filter(chapter > 0)
+
+tidy_book_captain_daughter <- tidy_book_captain_daughter %>%
+  left_join(get_sentiments("afinn"), by = "word")
 ```
 
 ```{r}
@@ -67,8 +70,63 @@ word_sentiment_data_captain_daughter <- word_scores_captain_daughter %>%
 library(ggplot2)
 
 word_sentiment_data_captain_daughter |> 
-  ggplot(aes(word, word_avg_sent)) + 
+  ggplot(aes(word, word_avg_sent, color="red")) + 
   geom_col() + 
-  scale_x_discrete(labels = NULL)
+  scale_x_discrete(labels = NULL) + 
+  labs(title="Average sentimental scored for each word in the book", 
+       x="Words", 
+       y="Average Sentimental score per word") + 
+  theme(legend.position = "none")
 ```
+
+```{r}
+#| message: false
+chapter_info_captain_daughter <- tidy_book_captain_daughter %>%
+  select(chapter, linenumber, word) %>% 
+  distinct()
+
+chapter_sentiment_captain_daughter <- tidy_book_captain_daughter %>%
+  group_by(chapter) %>%
+  summarise(median_sentiment = median(value, na.rm = TRUE))
+
+tidy_book_sentiment_captain_daughter <- tidy_book_captain_daughter %>%
+  select(-value) %>%  
+  left_join(get_sentiments("afinn"), by = "word") %>%
+  drop_na(value)
+
+chapter_sentiment_captain_daughter <- tidy_book_sentiment_captain_daughter %>%
+  group_by(chapter) %>%
+    summarise(median_sentiment = median(value, na.rm = TRUE))
+```
+
+```{r}
+#| message: false
+library(plotly)
+
+p <- chapter_sentiment_captain_daughter %>%
+  ggplot(aes(x = chapter, y = median_sentiment)) +
+  geom_point(color = "red", size = 3) +
+  geom_line(color = "red") +
+  labs(title = "Average sentimental score in each chapter",
+       x = "Chapter",
+       y = "Median Sentiment") + 
+  theme(legend.position = "none")
+
+ggplotly(p)
+```
+
+```{r}
+#| message: false
+library(dplyr)
+library(tidytext)
+library(reshape2)
+library(wordcloud)
+
+tidy_book_captain_daughter %>%
+  inner_join(get_sentiments("bing"), by = "word") %>%
+  count(word, sentiment, sort = TRUE) %>%
+  acast(word ~ sentiment, value.var = "n", fill = 0) %>%
+  comparison.cloud(colors = c("#bd3e2f", "#769e6d"), max.words = 250)
+```
+
 

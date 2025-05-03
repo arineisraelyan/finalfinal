@@ -184,33 +184,6 @@ Attaching package: 'dplyr'</code></pre>
     intersect, setdiff, setequal, union</code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 882 × 4
-   word       n value word_avg_sent
-   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;         &lt;dbl&gt;
- 1 no       276    -1          -276
- 2 like     127     2           254
- 3 good     108     3           324
- 4 yes       74     1            74
- 5 dead      69    -3          -207
- 6 great     68     3           204
- 7 want      61     1            61
- 8 poor      56    -2          -112
- 9 awful     41    -3          -123
-10 better    40     2            80
-# ℹ 872 more rows</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
 
 
 
@@ -307,7 +280,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/arineisraelyan\.github\.io\/finalfinal\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

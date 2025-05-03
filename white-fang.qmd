@@ -1,8 +1,8 @@
 ---
-title: "white-fang"
+title: "White Fang"
 execute:
-    echo: false
-    message: false
+  echo: false
+  message: false
 ---
 
 ```{r}
@@ -38,7 +38,8 @@ tidy_book_white_fang <- dir_white_fang %>%
     chapter = cumsum(str_detect(text, regex("^chapter [ivxlc]+", ignore_case = TRUE)))
   ) %>%
   unnest_tokens(word, text) %>%
-  filter(chapter > 0)
+  filter(chapter > 0) %>%
+  left_join(afinn, by = "word")
 ```
 
 ```{r}
@@ -67,7 +68,63 @@ library(ggplot2)
 
 word_sentiment_data_white_fang |> 
   ggplot(aes(word, word_avg_sent)) + 
-  geom_col() + 
-  scale_x_discrete(labels = NULL)
+  geom_col(color="darkgreen") + 
+  scale_x_discrete(labels = NULL) + 
+  labs(title = "Average Sentiment Score per Word – White Fang",
+       x = "Words",
+       y = "Average Sentiment Score") + 
+  theme_minimal() + 
+  theme(legend.position = "none")
+```
+
+```{r}
+#| message: false
+chapter_info_white_fang <- tidy_book_white_fang %>%
+  select(chapter, linenumber, word) %>% 
+  distinct()
+
+chapter_sentiment_white_fang <- tidy_book_white_fang %>%
+  group_by(chapter) %>%
+  summarise(median_sentiment = median(value, na.rm = TRUE))
+
+tidy_book_sentiment_white_fang <- tidy_book_white_fang %>%
+  select(-value) %>%  
+  left_join(get_sentiments("afinn"), by = "word") %>%
+  drop_na(value)
+
+chapter_sentiment_white_fang <- tidy_book_sentiment_white_fang %>%
+  group_by(chapter) %>%
+    summarise(median_sentiment = median(value, na.rm = TRUE))
+```
+
+```{r}
+#| message: false
+library(plotly)
+
+p <- chapter_sentiment_white_fang %>%
+  ggplot(aes(x = chapter, y = median_sentiment)) +
+  geom_point(color = "darkgreen", size = 3) +
+  geom_line(color = "darkgreen") +
+  labs(title = "Median Sentiment by Chapter – White Fang",
+       x = "Chapter",
+       y = "Median Sentiment (AFINN)") + 
+  theme_minimal() +
+  theme(legend.position = "none")
+
+ggplotly(p)
+```
+
+```{r}
+#| message: false
+library(dplyr)
+library(tidytext)
+library(reshape2)
+library(wordcloud)
+
+tidy_book_white_fang %>%
+  inner_join(get_sentiments("bing"), by = "word") %>%
+  count(word, sentiment, sort = TRUE) %>%
+  acast(word ~ sentiment, value.var = "n", fill = 0) %>%
+  comparison.cloud(colors = c("#bd3e2f", "#769e6d"), max.words = 250)
 ```
 

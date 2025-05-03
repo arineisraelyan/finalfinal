@@ -1,5 +1,5 @@
 ---
-title: "little-women"
+title: "Little Women"
 execute:
     echo: false
     message: false
@@ -32,25 +32,13 @@ dir_little_women <- tibble(text = lines_little_women)
 
 ```{r}
 #| message: false
-afinn <- get_sentiments("afinn")
-
-positive <- afinn |> filter(value > 0)
-
-negative <- afinn |> filter(value < 0)
-
-lines_little_women <- read_lines(dirt_little_women)
-dir_little_women <- tibble(text = lines_little_women)
-```
-
-```{r}
-#| message: false
 tidy_book_little_women <- dir_little_women %>%
   mutate(
     linenumber = row_number(),
     chapter = cumsum(str_detect(text, regex("^part\\s+\\d+\\b.*$", ignore_case = TRUE)))
   ) %>%
   unnest_tokens(word, text) %>%
-  filter(chapter > 0) 
+  filter(chapter > 0)
 
 tidy_book_little_women <- tidy_book_little_women %>%
   left_join(get_sentiments("afinn"), by = "word")
@@ -82,9 +70,13 @@ word_sentiment_data_little_women <- word_scores_little_women %>%
 library(ggplot2)
 
 word_sentiment_data_little_women |> 
-  ggplot(aes(word, word_avg_sent)) + 
+  ggplot(aes(word, word_avg_sent, color="red")) + 
   geom_col() + 
-  scale_x_discrete(labels = NULL)
+  scale_x_discrete(labels = NULL) + 
+  labs(title="Average sentimental score for each word in the book", 
+       x="Words", 
+       y="Average Sentimental score per word") + 
+  theme(legend.position = "none")
 ```
 
 ```{r}
@@ -101,7 +93,6 @@ chapter_sentiment_little <- tidy_book_sentiment_little %>%
 
 ```{r}
 #| message: false
-library(ggplot2)
 library(plotly)
 
 p <- chapter_sentiment_little %>%
@@ -110,9 +101,24 @@ p <- chapter_sentiment_little %>%
   geom_line(color = "darkgreen") +
   labs(title = "Median Sentiment by Chapter – Little Women",
        x = "Chapter",
-       y = "Median Sentiment (AFINN)") +
-  theme_minimal() + labs(title="Most used words by their sentimental values")
+       y = "Median Sentiment") +
+  theme(legend.position = "none")
 
 ggplotly(p)
+```
+
+```{r}
+#| message: false
+#| warning: false
+library(dplyr)
+library(tidytext)
+library(reshape2)
+library(wordcloud)
+
+tidy_book_little_women %>%
+  inner_join(get_sentiments("bing"), by = "word") %>%
+  count(word, sentiment, sort = TRUE) %>%
+  acast(word ~ sentiment, value.var = "n", fill = 0) %>%
+  comparison.cloud(colors = c("pink", "purple"), max.words = 250)
 ```
 

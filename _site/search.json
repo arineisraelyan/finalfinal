@@ -30,9 +30,9 @@
   {
     "objectID": "anna-karenina.html",
     "href": "anna-karenina.html",
-    "title": "anna-karenina",
+    "title": "Anna Karenina",
     "section": "",
-    "text": "Attaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout"
+    "text": "Warning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): revolutionary could not be fit on page. It will not be plotted.\n\n\nWarning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): splendid could not be fit on page. It will not be plotted.\n\n\nWarning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): striking could not be fit on page. It will not be plotted.\n\n\nWarning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): thoughtful could not be fit on page. It will not be plotted."
   },
   {
     "objectID": "war_peace.html",
@@ -44,9 +44,9 @@
   {
     "objectID": "little-women.html",
     "href": "little-women.html",
-    "title": "little-women",
+    "title": "Little Women",
     "section": "",
-    "text": "Attaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout"
+    "text": "Warning in inner_join(., get_sentiments(\"bing\"), by = \"word\"): Detected an unexpected many-to-many relationship between `x` and `y`.\nℹ Row 13272 of `x` matches multiple rows in `y`.\nℹ Row 4710 of `y` matches multiple rows in `x`.\nℹ If a many-to-many relationship is expected, set `relationship =\n  \"many-to-many\"` to silence this warning."
   },
   {
     "objectID": "murder.html",
@@ -54,5 +54,12 @@
     "title": "murder",
     "section": "",
     "text": "The downloaded binary packages are in\n    /var/folders/31/gjl12q7d0bs02gcv2n1xgxym0000gp/T//RtmpR8xwBa/downloaded_packages"
+  },
+  {
+    "objectID": "oliver-twist.html",
+    "href": "oliver-twist.html",
+    "title": "Oliver Twist",
+    "section": "",
+    "text": "Warning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): ingenious could not be fit on page. It will not be plotted.\n\n\nWarning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): progress could not be fit on page. It will not be plotted."
   }
 ]

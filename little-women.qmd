@@ -111,7 +111,7 @@ p <- chapter_sentiment_little %>%
   labs(title = "Median Sentiment by Chapter – Little Women",
        x = "Chapter",
        y = "Median Sentiment (AFINN)") +
-  theme_minimal()
+  theme_minimal() + labs(title="Most used words by their sentimental values")
 
 ggplotly(p)
 ```

@@ -43,6 +43,56 @@ website:
             text: White Fang
       - about.qmd
       
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - href: index.qmd
+        text: Home
+  
+      - section: "Russia"
+        contents:
+          - section: "Leo Tolstoy"
+            contents:
+              - href: anna-karenina.qmd
+                text: Anna Karenina
+              - href: war-peace.qmd
+                text: War and Peace
+          - section: "Alexander Pushkin"
+            contents:
+              - href: captain-daughter.qmd
+                text: The Captain's Daughter
+  
+      - section: "United States"
+        contents:
+          - section: "Louisa May Alcott"
+            contents:
+              - href: little-women.qmd
+                text: Little Women
+          - section: "Mark Twain"
+            contents:
+              - href: tom-sawyer.qmd
+                text: The Adventures of Tom Sawyer
+          - section: "Jack London"
+            contents:
+              - href: white-fang.qmd
+                text: White Fang
+  
+      - section: "United Kingdom"
+        contents:
+          - section: "Agatha Christie"
+            contents:
+              - href: murder.qmd
+                text: Murder on the Orient Express
+          - section: "Charles Dickens"
+            contents:
+              - href: oliver-twist.qmd
+                text: Oliver Twist
+          - section: "Daniel Defoe"
+            contents:
+              - href: robin.qmd
+                text: Robinson Crusoe
+      
 format:
   html:
     theme: flatly

@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sentiment analysis of narratives",
-    "section": "",
-    "text": "No renderer backend detected. gganimate will default to writing frames to separate files\nConsider installing:\n- the `gifski` package for gif output\n- the `av` package for video output\nand restarting the R session\n\n\nWarning: No renderer available. Please install the gifski, av, or magick package to\ncreate animated output"
-  },
-  {
-    "objectID": "test.html",
-    "href": "test.html",
-    "title": "Test",
-    "section": "",
-    "text": "library(tidytext)\n\nget_sentiments(\"afinn\")\n\n# A tibble: 2,477 × 2\n   word       value\n   &lt;chr&gt;      &lt;dbl&gt;\n 1 abandon       -2\n 2 abandoned     -2\n 3 abandons      -2\n 4 abducted      -2\n 5 abduction     -2\n 6 abductions    -2\n 7 abhor         -3\n 8 abhorred      -3\n 9 abhorrent     -3\n10 abhors        -3\n# ℹ 2,467 more rows\n\n\n\nget_sentiments(\"bing\")\n\n# A tibble: 6,786 × 2\n   word        sentiment\n   &lt;chr&gt;       &lt;chr&gt;    \n 1 2-faces     negative \n 2 abnormal    negative \n 3 abolish     negative \n 4 abominable  negative \n 5 abominably  negative \n 6 abominate   negative \n 7 abomination negative \n 8 abort       negative \n 9 aborted     negative \n10 aborts      negative \n# ℹ 6,776 more rows\n\n\n\nget_sentiments(\"nrc\")\n\n# A tibble: 13,872 × 2\n   word        sentiment\n   &lt;chr&gt;       &lt;chr&gt;    \n 1 abacus      trust    \n 2 abandon     fear     \n 3 abandon     negative \n 4 abandon     sadness  \n 5 abandoned   anger    \n 6 abandoned   fear     \n 7 abandoned   negative \n 8 abandoned   sadness  \n 9 abandonment anger    \n10 abandonment fear     \n# ℹ 13,862 more rows\n\n\n\nlibrary(janeaustenr)\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(stringr)\n\ntidy_books &lt;- austen_books() %&gt;%\n  group_by(book) %&gt;%\n  mutate(\n    linenumber = row_number(),\n    chapter = cumsum(str_detect(text, \n                                regex(\"^chapter [\\\\divxlc]\", \n                                      ignore_case = TRUE)))) %&gt;%\n  ungroup() %&gt;%\n  unnest_tokens(word, text)\n\n\nnrc_joy &lt;- get_sentiments(\"nrc\") %&gt;% \n  filter(sentiment == \"joy\")\n\ntidy_books %&gt;%\n  filter(book == \"Emma\") %&gt;%\n  inner_join(nrc_joy) %&gt;%\n  count(word, sort = TRUE)\n\nJoining with `by = join_by(word)`\n\n\n# A tibble: 301 × 2\n   word          n\n   &lt;chr&gt;     &lt;int&gt;\n 1 good        359\n 2 friend      166\n 3 hope        143\n 4 happy       125\n 5 love        117\n 6 deal         92\n 7 found        92\n 8 present      89\n 9 kind         82\n10 happiness    76\n# ℹ 291 more rows\n\n\n\nlibrary(tidyr)\n\njane_austen_sentiment &lt;- tidy_books %&gt;%\n  inner_join(get_sentiments(\"bing\")) %&gt;%\n  count(book, index = linenumber %/% 80, sentiment) %&gt;%\n  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %&gt;% \n  mutate(sentiment = positive - negative)\n\nJoining with `by = join_by(word)`\n\n\nWarning in inner_join(., get_sentiments(\"bing\")): Detected an unexpected many-to-many relationship between `x` and `y`.\nℹ Row 435434 of `x` matches multiple rows in `y`.\nℹ Row 5051 of `y` matches multiple rows in `x`.\nℹ If a many-to-many relationship is expected, set `relationship =\n  \"many-to-many\"` to silence this warning.\n\n\n\nlibrary(ggplot2)\n\nggplot(jane_austen_sentiment, aes(index, sentiment, fill = book)) +\n  geom_col(show.legend = FALSE) +\n  facet_wrap(~book, ncol = 2, scales = \"free_x\")"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -21,45 +7,10 @@
     "text": "About this site"
   },
   {
-    "objectID": "tom-sawyer.html",
-    "href": "tom-sawyer.html",
-    "title": "tom-sawyer",
+    "objectID": "white-fang.html",
+    "href": "white-fang.html",
+    "title": "White Fang",
     "section": "",
-    "text": "Attaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union"
-  },
-  {
-    "objectID": "anna-karenina.html",
-    "href": "anna-karenina.html",
-    "title": "Anna Karenina",
-    "section": "",
-    "text": "Warning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): revolutionary could not be fit on page. It will not be plotted.\n\n\nWarning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): splendid could not be fit on page. It will not be plotted.\n\n\nWarning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): striking could not be fit on page. It will not be plotted.\n\n\nWarning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): thoughtful could not be fit on page. It will not be plotted."
-  },
-  {
-    "objectID": "war_peace.html",
-    "href": "war_peace.html",
-    "title": "war-peace",
-    "section": "",
-    "text": "# A tibble: 597 × 4\n   word        n value word_avg_sent\n   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt;         &lt;dbl&gt;\n 1 no         92    -1           -92\n 2 dear       86     2           172\n 3 smile      67     2           134\n 4 like       61     2           122\n 5 yes        44     1            44\n 6 good       35     3           105\n 7 smiling    27     2            54\n 8 smiled     24     2            48\n 9 great      23     3            69\n10 leave      20    -1           -20\n# ℹ 587 more rows"
-  },
-  {
-    "objectID": "little-women.html",
-    "href": "little-women.html",
-    "title": "Little Women",
-    "section": "",
-    "text": "Warning in inner_join(., get_sentiments(\"bing\"), by = \"word\"): Detected an unexpected many-to-many relationship between `x` and `y`.\nℹ Row 13272 of `x` matches multiple rows in `y`.\nℹ Row 4710 of `y` matches multiple rows in `x`.\nℹ If a many-to-many relationship is expected, set `relationship =\n  \"many-to-many\"` to silence this warning."
-  },
-  {
-    "objectID": "murder.html",
-    "href": "murder.html",
-    "title": "murder",
-    "section": "",
-    "text": "The downloaded binary packages are in\n    /var/folders/31/gjl12q7d0bs02gcv2n1xgxym0000gp/T//RtmpR8xwBa/downloaded_packages"
-  },
-  {
-    "objectID": "oliver-twist.html",
-    "href": "oliver-twist.html",
-    "title": "Oliver Twist",
-    "section": "",
-    "text": "Warning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): ingenious could not be fit on page. It will not be plotted.\n\n\nWarning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): progress could not be fit on page. It will not be plotted."
+    "text": "Warning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): smoothly could not be fit on page. It will not be plotted."
   }
 ]

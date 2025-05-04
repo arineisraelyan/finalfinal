@@ -302,6 +302,8 @@ p <- ggplot(country_century_sentiment, aes(x = country, y = median_sentiment, co
 
 # Animate
 animate(p, nframes = 100, fps = 10)
+  
+anim_save("sentiment_by_country_century.gif")
 ```
 
 

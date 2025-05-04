@@ -134,3 +134,11 @@ war_peace_summary <- tibble(
 write_rds(war_peace_summary, "data/war_peace_summary.rds")
 ```
 
+```{r}
+chapter_sentiment_war_peace <- chapter_sentiment_war_peace %>%
+  mutate(book = "War and Peace")
+
+saveRDS(chapter_sentiment_war_peace, "data/chapter_sentiment_war_peace.rds")
+
+```
+

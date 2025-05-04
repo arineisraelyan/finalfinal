@@ -193,7 +193,7 @@ angle <- 90 - 360 * (label_data$id - 0.5) / number_of_bar
 label_data$hjust <- ifelse(angle < -90, 1, 0)
 label_data$angle <- ifelse(angle < -90, angle + 180, angle)
 
-p <- ggplot(data, aes(x = as.factor(id), y = median_sentiment, fill = country)) +
+plot2 <- ggplot(data, aes(x = as.factor(id), y = median_sentiment, fill = country)) +
   geom_bar(stat = "identity", alpha = 0.5) +
   ylim(-1.5, 2) +  
   theme_minimal() +
@@ -208,7 +208,6 @@ p <- ggplot(data, aes(x = as.factor(id), y = median_sentiment, fill = country)) 
   geom_text(data = label_data, aes(x = id, y = median_sentiment + 0.1, label = book, hjust = hjust),
             color = "black", fontface = "bold", alpha = 0.6, size = 2.5, angle = label_data$angle, inherit.aes = FALSE)
 
-p
 ```
 
 ```{r}
@@ -225,7 +224,7 @@ author_sentiment <- all_books_summary_with_narratives %>%
   summarise(median_sentiment = median(median_sentiment, na.rm = TRUE)) %>%
   ungroup()
 
-ggplot(author_sentiment, aes(x = author, y = median_sentiment, fill = author)) +
+plot3 <- ggplot(author_sentiment, aes(x = author, y = median_sentiment, fill = author)) +
   geom_bar(stat = "identity") + 
   scale_fill_manual(values = c(
     "Leo Tolstoy" = "#8140c7",
@@ -255,7 +254,7 @@ all_books_summary_with_narratives <- all_books_summary_with_narratives %>%
   arrange(author) %>%
   mutate(id = row_number())
 
-ggplot(all_books_summary_with_narratives, aes(x = factor(id), y = median_sentiment, fill = author)) +
+plot4 <- ggplot(all_books_summary_with_narratives, aes(x = factor(id), y = median_sentiment, fill = author)) +
   geom_bar(stat = "identity") +
   coord_polar() +
   scale_fill_manual(values = c(
@@ -283,27 +282,83 @@ ggplot(all_books_summary_with_narratives, aes(x = factor(id), y = median_sentime
 ```
 
 ```{r}
+  #| message: false
 library(ggplot2)
 library(gganimate)
 library(dplyr)
 
-# Prepare data
 country_century_sentiment <- all_books_summary_with_narratives %>%
   group_by(country, century) %>%
   summarise(median_sentiment = median(median_sentiment, na.rm = TRUE), .groups = "drop")
 
-# Plot
-p <- ggplot(country_century_sentiment, aes(x = country, y = median_sentiment, color = country)) +
+plot5 <- ggplot(country_century_sentiment, aes(x = country, y = median_sentiment, color = country)) +
   geom_point(size = 6, alpha = 0.8) +
   labs(title = 'Sentiment by Country in Century: {closest_state}', y = 'Median Sentiment', x = 'Country') +
   theme_minimal() +
   transition_states(century, transition_length = 2, state_length = 1) +
   ease_aes('cubic-in-out')
 
-# Animate
-animate(p, nframes = 100, fps = 10)
-  
+```
+
+```{r}
+chapter_sentiment_anna_karenina <- readRDS("data/chapter_sentiment_anna_karenina.rds")
+chapter_sentiment_captain_daughter <- readRDS("data/chapter_sentiment_captain_daughter.rds")
+chapter_sentiment_little_women <- readRDS("data/chapter_sentiment_little_women.rds")
+chapter_sentiment_murder <- readRDS("data/chapter_sentiment_murder.rds")
+chapter_sentiment_oliver_twist <- readRDS("data/chapter_sentiment_oliver_twist.rds")
+chapter_sentiment_robin <- readRDS("data/chapter_sentiment_robin.rds")
+chapter_sentiment_tom_sawyer <- readRDS("data/chapter_sentiment_tom_sawyer.rds")
+chapter_sentiment_war_peace <- readRDS("data/chapter_sentiment_war_peace.rds")
+chapter_sentiment_white_fang <- readRDS("data/chapter_sentiment_white_fang.rds")
+
+all_chapter_sentiments <- bind_rows(
+  chapter_sentiment_anna_karenina,
+  chapter_sentiment_captain_daughter,
+  chapter_sentiment_little_women,
+  chapter_sentiment_murder,
+  chapter_sentiment_oliver_twist,
+  chapter_sentiment_robin,
+  chapter_sentiment_tom_sawyer,
+  chapter_sentiment_war_peace,
+  chapter_sentiment_white_fang
+)
+```
+
+```{r}
+#| message: false
+#| warning: false
+library(ggplot2)
+
+plot1 <- ggplot(all_chapter_sentiments, aes(x = chapter, y = median_sentiment, color = book)) +
+  geom_line() +
+  geom_point(size = 1.5) +
+  labs(
+    title = "Chapter-Level Sentiment Across All Books",
+    x = "Chapter",
+    y = "Median Sentiment",
+    color = "Book"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16),
+    legend.position = "bottom"
+  )
+
+```
+
+```{r}
+#| message: false
+#| warning: false
+
+library(plotly)
+ggplotly(plot1)
+plot2
+plot3
+plot4
+animate(plot5, nframes = 100, fps = 10)
 anim_save("sentiment_by_country_century.gif")
 ```
+
+
 
 

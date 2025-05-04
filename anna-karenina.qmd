@@ -135,4 +135,11 @@ anna_karenina_summary <- tibble(
 write_rds(anna_karenina_summary, "data/anna_karenina_summary.rds")
 ```
 
+```{r}
+chapter_sentiment_anna_karenina <- chapter_sentiment_anna %>%
+  mutate(book = "Anna Karenina")
+
+saveRDS(chapter_sentiment_anna_karenina, "data/chapter_sentiment_anna_karenina.rds")
+```
+
 

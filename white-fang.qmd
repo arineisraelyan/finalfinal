@@ -139,3 +139,11 @@ white_fang_summary <- tibble(
 write_rds(white_fang_summary, "data/white_fang_summary.rds")
 ```
 
+```{r}
+chapter_sentiment_white_fang <- chapter_sentiment_white_fang %>%
+  mutate(book = "White Fang")
+
+saveRDS(chapter_sentiment_white_fang, "data/chapter_sentiment_white_fang.rds")
+
+```
+

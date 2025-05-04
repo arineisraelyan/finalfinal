@@ -140,3 +140,11 @@ oliver_twist_summary <- tibble(
 write_rds(oliver_twist_summary, "data/oliver_twist_summary.rds")
 ```
 
+```{r}
+chapter_sentiment_oliver_twist <- chapter_sentiment_oliver_twist %>%
+  mutate(book = "Oliver Twist")
+
+saveRDS(chapter_sentiment_oliver_twist, "data/chapter_sentiment_oliver_twist.rds")
+```
+
+

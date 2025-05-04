@@ -136,3 +136,11 @@ murder_summary <- tibble(
 
 write_rds(murder_summary, "data/murder_summary.rds")
 ```
+
+```{r}
+chapter_sentiment_murder <- chapter_sentiment_murder %>%
+  mutate(book = "Murder on the Orient Express")
+
+saveRDS(chapter_sentiment_murder, "data/chapter_sentiment_murder.rds")
+```
+

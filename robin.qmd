@@ -139,3 +139,11 @@ robin_summary <- tibble(
 write_rds(robin_summary, "data/robin_summary.rds")
 ```
 
+```{r}
+chapter_sentiment_robin <- chapter_sentiment_robin %>%
+  mutate(book = "Robinson Crusoe")
+
+saveRDS(chapter_sentiment_robin, "data/chapter_sentiment_robin.rds")
+
+```
+

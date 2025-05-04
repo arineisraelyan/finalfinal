@@ -133,3 +133,10 @@ little_women_summary <- tibble(
 write_rds(little_women_summary, "data/little_women_summary.rds")
 ```
 
+```{r}
+chapter_sentiment_little_women <- chapter_sentiment_little %>%
+  mutate(book = "Little Women")
+
+saveRDS(chapter_sentiment_little_women, "data/chapter_sentiment_little_women.rds")
+```
+

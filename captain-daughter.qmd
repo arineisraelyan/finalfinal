@@ -140,3 +140,10 @@ captain_daughter_summary <- tibble(
 write_rds(captain_daughter_summary, "data/captain_daughter_summary.rds")
 ```
 
+```{r}
+chapter_sentiment_captain_daughter <- chapter_sentiment_captain_daughter %>%
+  mutate(book = "The Captain's Daughter")
+
+saveRDS(chapter_sentiment_captain_daughter, "data/chapter_sentiment_captain_daughter.rds")
+```
+

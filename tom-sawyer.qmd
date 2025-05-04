@@ -138,3 +138,11 @@ tom_sawyer_summary <- tibble(
 write_rds(tom_sawyer_summary, "data/tom_sawyer_summary.rds")
 ```
 
+```{r}
+chapter_sentiment_tom_sawyer <- chapter_sentiment_tom_sawyer %>%
+  mutate(book = "The Adventures of Tom Sawyer")
+
+saveRDS(chapter_sentiment_tom_sawyer, "data/chapter_sentiment_tom_sawyer.rds")
+
+```
+

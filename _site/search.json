@@ -5,5 +5,18 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "white-fang.html",
+    "href": "white-fang.html",
+    "title": "White Fang",
+    "section": "",
+    "text": "Warning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): superiority could not be fit on page. It will not be plotted.",
+    "crumbs": [
+      "Home",
+      "United States",
+      "Jack London",
+      "White Fang"
+    ]
   }
 ]

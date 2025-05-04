@@ -123,3 +123,14 @@ tidy_book_war_peace %>%
   comparison.cloud(colors = c("#bd3e2f", "#769e6d"), max.words = 250)
 ```
 
+```{r}
+war_peace_summary <- tibble(
+  book = "War and Peace",
+  author = "Leo Tolstoy",
+  country = "Russia",
+  median_sentiment = median(chapter_sentiment_war_peace$median_sentiment, na.rm = TRUE)
+)
+
+write_rds(war_peace_summary, "data/war_peace_summary.rds")
+```
+

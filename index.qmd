@@ -6,6 +6,7 @@ execute:
 ---
 
 ```{r}
+#| message: false
 library(tidytext)
 library(dplyr)
 library(stringr)
@@ -147,5 +148,160 @@ narratives <- tibble(
 # word_sentiment_data |> ggplot(aes(word, word_avg_sent)) + geom_col() + scale_x_discrete(labels = NULL) 
 ```
 
+```{r}
+#| message: false
+library(readr)
+library(dplyr)
+library(tidyverse)
+
+anna_karenina <- read_rds("data/anna_karenina_summary.rds")
+
+captain_daughter <- read_rds("data/captain_daughter_summary.rds")
+
+little_women <- read_rds("data/little_women_summary.rds")
+
+murder <- read_rds("data/murder_summary.rds")
+
+oliver_twist <- read_rds("data/oliver_twist_summary.rds")
+
+robin <- read_rds("data/robin_summary.rds")
+
+tom_sawyer <- read_rds("data/tom_sawyer_summary.rds")
+
+war_peace <- read_rds("data/war_peace_summary.rds")
+
+white_fang <- read_rds("data/white_fang_summary.rds")
+
+all_books_summary <- bind_rows(anna_karenina, captain_daughter, little_women, murder, oliver_twist, robin, tom_sawyer, war_peace, white_fang)
+```
+
+```{r}
+#| warning: false
+#| message: false
+empty_bar <- 4
+to_add <- data.frame(matrix(NA, empty_bar * nlevels(factor(all_books_summary$country)), ncol(all_books_summary)))
+colnames(to_add) <- colnames(all_books_summary)
+to_add$country <- rep(levels(factor(all_books_summary$country)), each = empty_bar)
+
+data <- rbind(all_books_summary, to_add)
+data <- data %>% arrange(country)
+data$id <- seq(1, nrow(data))
+
+label_data <- data
+number_of_bar <- nrow(label_data)
+angle <- 90 - 360 * (label_data$id - 0.5) / number_of_bar
+label_data$hjust <- ifelse(angle < -90, 1, 0)
+label_data$angle <- ifelse(angle < -90, angle + 180, angle)
+
+p <- ggplot(data, aes(x = as.factor(id), y = median_sentiment, fill = country)) +
+  geom_bar(stat = "identity", alpha = 0.5) +
+  ylim(-1.5, 2) +  
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    panel.grid = element_blank(),
+    plot.margin = unit(rep(-1, 4), "cm")
+  ) +
+  coord_polar() +
+  geom_text(data = label_data, aes(x = id, y = median_sentiment + 0.1, label = book, hjust = hjust),
+            color = "black", fontface = "bold", alpha = 0.6, size = 2.5, angle = label_data$angle, inherit.aes = FALSE)
+
+p
+```
+
+```{r}
+#| message: false
+all_books_summary_clean <- all_books_summary %>%
+  select(-author, -country)
+
+
+all_books_summary_with_narratives <- all_books_summary_clean %>%
+  left_join(narratives, by = c("book" = "narrative"))
+
+author_sentiment <- all_books_summary_with_narratives %>%
+  group_by(author) %>%
+  summarise(median_sentiment = median(median_sentiment, na.rm = TRUE)) %>%
+  ungroup()
+
+ggplot(author_sentiment, aes(x = author, y = median_sentiment, fill = author)) +
+  geom_bar(stat = "identity") + 
+  scale_fill_manual(values = c(
+    "Leo Tolstoy" = "#8140c7",
+    "Louisa May Alcott" = "#4073c7",
+    "Agatha Christie" = "#c74068",
+    "Charles Dickens" = "#c740a7",
+    "Daniel Defoe" = "#40c791",
+    "Alexander Pushkin" = "#5440c7",
+    "Mark Twain" = "#b7c740",
+    "Jack London" = "#c75440"
+  )) +
+  labs(title = "Median Sentiment by Author", x = "Author", y = "Median Sentiment Score") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 10), 
+    axis.text.y = element_text(size = 12),
+    plot.title = element_text(size = 14, hjust = 0.5),
+    legend.position = "none"
+  )
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+all_books_summary_with_narratives <- all_books_summary_with_narratives %>%
+  arrange(author) %>%
+  mutate(id = row_number())
+
+ggplot(all_books_summary_with_narratives, aes(x = factor(id), y = median_sentiment, fill = author)) +
+  geom_bar(stat = "identity") +
+  coord_polar() +
+  scale_fill_manual(values = c(
+    "Leo Tolstoy" = "#8140c7",
+    "Louisa May Alcott" = "#4073c7",
+    "Agatha Christie" = "#c74068",
+    "Charles Dickens" = "#c740a7",
+    "Daniel Defoe" = "#40c791",
+    "Alexander Pushkin" = "#5440c7",
+    "Mark Twain" = "#b7c740",
+    "Jack London" = "#c75440"
+  )) +
+  labs(
+    title = "Literary Sentiment Galaxy",
+    x = "", y = ""
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank(),
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5, size = 16)
+  )
+```
+
+```{r}
+library(ggplot2)
+library(gganimate)
+library(dplyr)
+
+# Prepare data
+country_century_sentiment <- all_books_summary_with_narratives %>%
+  group_by(country, century) %>%
+  summarise(median_sentiment = median(median_sentiment, na.rm = TRUE), .groups = "drop")
+
+# Plot
+p <- ggplot(country_century_sentiment, aes(x = country, y = median_sentiment, color = country)) +
+  geom_point(size = 6, alpha = 0.8) +
+  labs(title = 'Sentiment by Country in Century: {closest_state}', y = 'Median Sentiment', x = 'Country') +
+  theme_minimal() +
+  transition_states(century, transition_length = 2, state_length = 1) +
+  ease_aes('cubic-in-out')
+
+# Animate
+animate(p, nframes = 100, fps = 10)
+```
 
 

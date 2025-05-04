@@ -129,3 +129,14 @@ tidy_book_oliver_twist %>%
   comparison.cloud(colors = c("#bd3e2f", "#769e6d"), max.words = 250)
 ```
 
+```{r}
+oliver_twist_summary <- tibble(
+  book = "Oliver Twist",
+  author = "Charles Dickens",
+  country = "United Kingdom",
+  median_sentiment = median(chapter_sentiment_oliver_twist$median_sentiment, na.rm = TRUE)
+)
+
+write_rds(oliver_twist_summary, "data/oliver_twist_summary.rds")
+```
+

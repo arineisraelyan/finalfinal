@@ -127,3 +127,14 @@ tidy_book_tom_sawyer %>%
   comparison.cloud(colors = c("#bd3e2f", "#769e6d"), max.words = 250)
 ```
 
+```{r}
+tom_sawyer_summary <- tibble(
+  book = "The Adventures of Tom Sawyer",
+  author = "Mark Twain",
+  country = "United States",
+  median_sentiment = median(chapter_sentiment_tom_sawyer$median_sentiment, na.rm = TRUE)
+)
+
+write_rds(tom_sawyer_summary, "data/tom_sawyer_summary.rds")
+```
+

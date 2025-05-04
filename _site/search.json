@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Sentiment analysis of narratives",
     "section": "",
-    "text": "Attaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union"
+    "text": "No renderer backend detected. gganimate will default to writing frames to separate files\nConsider installing:\n- the `gifski` package for gif output\n- the `av` package for video output\nand restarting the R session\n\n\nWarning: No renderer available. Please install the gifski, av, or magick package to\ncreate animated output"
   },
   {
     "objectID": "test.html",

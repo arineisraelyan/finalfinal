@@ -126,4 +126,13 @@ tidy_book_murder %>%
   comparison.cloud(colors = c("#bd3e2f", "#769e6d"), max.words = 250)
 ```
 
+```{r}
+murder_summary <- tibble(
+  book = "Murder on the Orient Express",
+  author = "Agatha Christie",
+  country = "United Kingdom",
+  median_sentiment = median(chapter_sentiment_murder$median_sentiment, na.rm = TRUE)
+)
 
+write_rds(murder_summary, "data/murder_summary.rds")
+```

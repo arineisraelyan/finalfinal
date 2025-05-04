@@ -124,5 +124,15 @@ tidy_book_anna_karenina %>%
   comparison.cloud(colors = c("#bd3e2f", "#769e6d"), max.words = 250)
 ```
 
+```{r}
+anna_karenina_summary <- tibble(
+  book = "Anna Karenina",
+  author = "Leo Tolstoy",
+  country = "Russia",
+  median_sentiment = median(chapter_sentiment_anna$median_sentiment, na.rm = TRUE)
+)
+
+write_rds(anna_karenina_summary, "data/anna_karenina_summary.rds")
+```
 
 

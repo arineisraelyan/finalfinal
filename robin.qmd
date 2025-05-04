@@ -128,3 +128,14 @@ tidy_book_robin %>%
   comparison.cloud(colors = c("#bd3e2f", "#769e6d"), max.words = 250)
 ```
 
+```{r}
+robin_summary <- tibble(
+  book = "Robinson Crusoe",
+  author = "Daniel Defoe",
+  country = "United Kingdom",
+  median_sentiment = median(chapter_sentiment_robin$median_sentiment, na.rm = TRUE)
+)
+
+write_rds(robin_summary, "data/robin_summary.rds")
+```
+

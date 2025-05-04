@@ -128,3 +128,14 @@ tidy_book_white_fang %>%
   comparison.cloud(colors = c("#bd3e2f", "#769e6d"), max.words = 250)
 ```
 
+```{r}
+white_fang_summary <- tibble(
+  book = "White Fang",
+  author = "Jack London",
+  country = "United States",
+  median_sentiment = median(chapter_sentiment_white_fang$median_sentiment, na.rm = TRUE)
+)
+
+write_rds(white_fang_summary, "data/white_fang_summary.rds")
+```
+

@@ -129,4 +129,14 @@ tidy_book_captain_daughter %>%
   comparison.cloud(colors = c("#bd3e2f", "#769e6d"), max.words = 250)
 ```
 
+```{r}
+captain_daughter_summary <- tibble(
+  book = "The Captain's Daughter",
+  author = "Alexander Pushkin",
+  country = "Russia",
+  median_sentiment = median(chapter_sentiment_captain_daughter$median_sentiment, na.rm = TRUE)
+)
+
+write_rds(captain_daughter_summary, "data/captain_daughter_summary.rds")
+```
 

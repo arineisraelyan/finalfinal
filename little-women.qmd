@@ -122,3 +122,14 @@ tidy_book_little_women %>%
   comparison.cloud(colors = c("pink", "purple"), max.words = 250)
 ```
 
+```{r}
+little_women_summary <- tibble(
+  book = "Little Women",
+  author = "Louisa May Alcott",
+  country = "United States",
+  median_sentiment = median(chapter_sentiment_little$median_sentiment, na.rm = TRUE)
+)
+
+write_rds(little_women_summary, "data/little_women_summary.rds")
+```
+

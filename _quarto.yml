@@ -41,7 +41,10 @@ website:
         menu:
           - href: white-fang.qmd
             text: White Fang
-      - about.qmd
+      - href: about.qmd
+        text: About
+      - href: sources.qmd
+        text: Sources
       
   sidebar:
     style: "docked"

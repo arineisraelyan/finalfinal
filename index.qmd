@@ -345,7 +345,7 @@ plot1 <- ggplot(all_chapter_sentiments, aes(x = chapter, y = median_sentiment, c
 
 ```
 
-# What is Sentimental Analysis of Narratives?
+# What is Sentiment Analysis of Narratives?
 
 Sentimental analysis of narratives is a the process of analysing and presenting the plots and mood of narratives of authors from different countries, centuries, races. Sentimental score is a number representing the level of the word's sentiment. If the score is negative, the sentiment of the word is negative, if the score if positive, the sentiment score of the word is positive. If the score is zero, the word is neutral.
 

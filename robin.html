@@ -418,8 +418,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#plot-1-average-sentimental-score-for-each-non-neutral-word-in-the-narrative" id="toc-plot-1-average-sentimental-score-for-each-non-neutral-word-in-the-narrative" class="nav-link active" data-scroll-target="#plot-1-average-sentimental-score-for-each-non-neutral-word-in-the-narrative">Plot 1: Average sentimental score for each non-neutral word in the narrative</a></li>
+  <li><a href="#plot-2-average-sentimental-score-of-each-chapter" id="toc-plot-2-average-sentimental-score-of-each-chapter" class="nav-link" data-scroll-target="#plot-2-average-sentimental-score-of-each-chapter">Plot 2: Average sentimental score of each chapter</a></li>
+  <li><a href="#plot-3-most-used-words-by-their-sentimental-value" id="toc-plot-3-most-used-words-by-their-sentimental-value" class="nav-link" data-scroll-target="#plot-3-most-used-words-by-their-sentimental-value">Plot 3: Most used words by their sentimental value</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -443,6 +451,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="plot-1-average-sentimental-score-for-each-non-neutral-word-in-the-narrative" class="level1">
+<h1>Plot 1: Average sentimental score for each non-neutral word in the narrative</h1>
+<p><strong>You can see that there are words with both negative and positive sentimental score.</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -452,12 +463,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="plot-2-average-sentimental-score-of-each-chapter" class="level1">
+<h1>Plot 2: Average sentimental score of each chapter</h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-bab1d2505231a7d2359a" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-bab1d2505231a7d2359a">{"x":{"data":[{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],"y":[-1,1,1,1,-1,-1,2,1,1,1,1,-1,1,1,1,-1,-1,1,1,-1],"text":["chapter:  1<br />median_sentiment: -1","chapter:  2<br />median_sentiment:  1","chapter:  3<br />median_sentiment:  1","chapter:  4<br />median_sentiment:  1","chapter:  5<br />median_sentiment: -1","chapter:  6<br />median_sentiment: -1","chapter:  7<br />median_sentiment:  2","chapter:  8<br />median_sentiment:  1","chapter:  9<br />median_sentiment:  1","chapter: 10<br />median_sentiment:  1","chapter: 11<br />median_sentiment:  1","chapter: 12<br />median_sentiment: -1","chapter: 13<br />median_sentiment:  1","chapter: 14<br />median_sentiment:  1","chapter: 15<br />median_sentiment:  1","chapter: 16<br />median_sentiment: -1","chapter: 17<br />median_sentiment: -1","chapter: 18<br />median_sentiment:  1","chapter: 19<br />median_sentiment:  1","chapter: 20<br />median_sentiment: -1"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,0,255,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,0,255,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,0,255,1)","dash":"solid"},"frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826498,"l":37.260273972602747},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Median Sentiment by Chapter – Robinson Crusoe","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.049999999999999933,20.949999999999999],"tickmode":"array","ticktext":["5","10","15","20"],"tickvals":[5,10,15,20],"categoryorder":"array","categoryarray":["5","10","15","20"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Chapter","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.1499999999999999,2.1499999999999999],"tickmode":"array","ticktext":["-1","0","1","2"],"tickvals":[-1,0,1,2],"categoryorder":"array","categoryarray":["-1","0","1","2"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Median Sentiment (AFINN)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"156761d07776e":{"x":{},"y":{},"type":"scatter"},"156765531e5a5":{"x":{},"y":{}}},"cur_data":"156761d07776e","visdat":{"156761d07776e":["function (y) ","x"],"156765531e5a5":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-c1d0c67370144570c222" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c1d0c67370144570c222">{"x":{"data":[{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],"y":[-1,1,1,1,-1,-1,2,1,1,1,1,-1,1,1,1,-1,-1,1,1,-1],"text":["chapter:  1<br />median_sentiment: -1","chapter:  2<br />median_sentiment:  1","chapter:  3<br />median_sentiment:  1","chapter:  4<br />median_sentiment:  1","chapter:  5<br />median_sentiment: -1","chapter:  6<br />median_sentiment: -1","chapter:  7<br />median_sentiment:  2","chapter:  8<br />median_sentiment:  1","chapter:  9<br />median_sentiment:  1","chapter: 10<br />median_sentiment:  1","chapter: 11<br />median_sentiment:  1","chapter: 12<br />median_sentiment: -1","chapter: 13<br />median_sentiment:  1","chapter: 14<br />median_sentiment:  1","chapter: 15<br />median_sentiment:  1","chapter: 16<br />median_sentiment: -1","chapter: 17<br />median_sentiment: -1","chapter: 18<br />median_sentiment:  1","chapter: 19<br />median_sentiment:  1","chapter: 20<br />median_sentiment: -1"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,0,255,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,0,255,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,0,255,1)","dash":"solid"},"frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826498,"l":37.260273972602747},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Median Sentiment by Chapter – Robinson Crusoe","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.049999999999999933,20.949999999999999],"tickmode":"array","ticktext":["5","10","15","20"],"tickvals":[5,10,15,20],"categoryorder":"array","categoryarray":["5","10","15","20"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Chapter","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.1499999999999999,2.1499999999999999],"tickmode":"array","ticktext":["-1","0","1","2"],"tickvals":[-1,0,1,2],"categoryorder":"array","categoryarray":["-1","0","1","2"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Median Sentiment (AFINN)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"ad035091a3c6":{"x":{},"y":{},"type":"scatter"},"ad03997457d":{"x":{},"y":{}}},"cur_data":"ad035091a3c6","visdat":{"ad035091a3c6":["function (y) ","x"],"ad03997457d":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
+</section>
+<section id="plot-3-most-used-words-by-their-sentimental-value" class="level1">
+<h1>Plot 3: Most used words by their sentimental value</h1>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -467,8 +484,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p><strong>Conclusion:</strong> This narrative is rich with different kinds of words and prosperous in its plot.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

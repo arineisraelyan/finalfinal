@@ -4,19 +4,140 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "About me\nWakey, wakey! I’m Ariné from Kapan, Armenia.\nThis website was created at Tumo Data Science workshop in April-May 2025.\nHere is my github: https://github.com/arineisraelyan"
+  },
+  {
+    "objectID": "little-women.html",
+    "href": "little-women.html",
+    "title": "Little Women",
+    "section": "",
+    "text": "Plot 1: Average sentimental score for each non-neutral word in the narrative\nYou can see that there are words with both negative and positive sentimental score.\n\n\n\n\n\n\n\n\n\n\n\nPlot 2: Average sentimental score of each chapter\n\n\n\n\n\n\n\n\nPlot 3: Most used words by their sentimental value\n\n\n\n\n\n\n\n\n\nConclusion: This narrative is rich with different kinds of words and prosperous in its plot.",
+    "crumbs": [
+      "Home",
+      "United States",
+      "Louisa May Alcott",
+      "Little Women"
+    ]
+  },
+  {
+    "objectID": "sources.html",
+    "href": "sources.html",
+    "title": "Sources",
+    "section": "",
+    "text": "The data for this website was created by me.\nFull-length texts of the books from: https://www.gutenberg.org/\nInformation about the authors and the narratives, like nationality, publishing years, etc. from Google."
+  },
+  {
+    "objectID": "anna-karenina.html",
+    "href": "anna-karenina.html",
+    "title": "Anna Karenina",
+    "section": "",
+    "text": "Plot 1: Average sentimental score for each non-neutral word in the narrative\nYou can see that there are words with both negative and positive sentimental score.\n\n\n\n\n\n\n\n\n\n\n\nPlot 2: Average sentimental score of each chapter\n\n\n\n\n\n\n\n\nPlot 3: Most used words by their sentimental value\n\n\n\n\n\n\n\n\n\nConclusion: This narrative is rich with different kinds of words and prosperous in its plot.",
+    "crumbs": [
+      "Home",
+      "Russia",
+      "Leo Tolstoy",
+      "Anna Karenina"
+    ]
+  },
+  {
+    "objectID": "murder.html",
+    "href": "murder.html",
+    "title": "Murder on the Orient Express",
+    "section": "",
+    "text": "Plot 1: Average sentimental score for each non-neutral word in the narrative\nYou can see that there are words with both negative and positive sentimental score.\n\n\n\n\n\n\n\n\n\n\n\nPlot 2: Average sentimental score of each chapter\n\n\n\n\n\n\n\n\nPlot 3: Most used words by their sentimental value\n\n\n\n\n\n\n\n\n\nConclusion: This narrative is rich with different kinds of words and prosperous in its plot.",
+    "crumbs": [
+      "Home",
+      "United Kingdom",
+      "Agatha Christie",
+      "Murder on the Orient Express"
+    ]
   },
   {
     "objectID": "white-fang.html",
     "href": "white-fang.html",
     "title": "White Fang",
     "section": "",
-    "text": "Warning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): superiority could not be fit on page. It will not be plotted.",
+    "text": "Plot 1: Average sentimental score for each non-neutral word in the narrative\nYou can see that there are words with both negative and positive sentimental score.\n\n\n\n\n\n\n\n\n\n\n\nPlot 2: Average sentimental score of each chapter\n\n\n\n\n\n\n\n\nPlot 3: Most used words by their sentimental value\n\n\n\n\n\n\n\n\n\nConclusion: This narrative is rich with different kinds of words and prosperous in its plot.",
     "crumbs": [
       "Home",
       "United States",
       "Jack London",
       "White Fang"
+    ]
+  },
+  {
+    "objectID": "tom-sawyer.html",
+    "href": "tom-sawyer.html",
+    "title": "The Adventures of Tom Sawyer",
+    "section": "",
+    "text": "Plot 1: Average sentimental score for each non-neutral word in the narrative\nYou can see that there are words with both negative and positive sentimental score.\n\n\n\n\n\n\n\n\n\n\n\nPlot 2: Average sentimental score of each chapter\n\n\n\n\n\n\n\n\nPlot 3: Most used words by their sentimental value\n\n\n\n\n\n\n\n\n\nConclusion: This narrative is rich with different kinds of words and prosperous in its plot.",
+    "crumbs": [
+      "Home",
+      "United States",
+      "Mark Twain",
+      "The Adventures of Tom Sawyer"
+    ]
+  },
+  {
+    "objectID": "captain-daughter.html",
+    "href": "captain-daughter.html",
+    "title": "The Captain’s Daughter",
+    "section": "",
+    "text": "Plot 1: Average sentimental score for each non-neutral word in the narrative\nYou can see that there are words with both negative and positive sentimental score.\n\n\n\n\n\n\n\n\n\n\n\nPlot 2: Average sentimental score of each chapter\n\n\n\n\n\n\n\n\nPlot 3: Most used words by their sentimental value\n\n\n\n\n\n\n\n\n\nConclusion: This narrative is rich with different kinds of words and prosperous in its plot.",
+    "crumbs": [
+      "Home",
+      "Russia",
+      "Alexander Pushkin",
+      "The Captain's Daughter"
+    ]
+  },
+  {
+    "objectID": "robin.html",
+    "href": "robin.html",
+    "title": "Robinson Crusoe",
+    "section": "",
+    "text": "Plot 1: Average sentimental score for each non-neutral word in the narrative\nYou can see that there are words with both negative and positive sentimental score.\n\n\n\n\n\n\n\n\n\n\n\nPlot 2: Average sentimental score of each chapter\n\n\n\n\n\n\n\n\nPlot 3: Most used words by their sentimental value\n\n\n\n\n\n\n\n\n\nConclusion: This narrative is rich with different kinds of words and prosperous in its plot.",
+    "crumbs": [
+      "Home",
+      "United Kingdom",
+      "Daniel Defoe",
+      "Robinson Crusoe"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sentiment analysis of narratives",
+    "section": "",
+    "text": "What is Sentimental Analysis of Narratives?\nSentimental analysis of narratives is a the process of analysing and presenting the plots and mood of narratives of authors from different countries, centuries, races. Sentimental score is a number representing the level of the word’s sentiment. If the score is negative, the sentiment of the word is negative, if the score if positive, the sentiment score of the word is positive. If the score is zero, the word is neutral.\nNarratives included\nThere were included authors from only 3 countries: USA, UK and Russia. You can see all the books on the top or on the right side of the website.\n\n\nWhy is this project important?\nBefore finding a book to read, you often think if it will match your taste and your mood at the time. This project can be useful to warn you about the sentimental aura of the book.\n\n\nPlot number 1: Chapter-level sentimental score across each book\nThis plot presents the sentimental score of each chapter in each book. It is easier to understand the emotional plot of the book according to this plot.\n\n\n\n\n\n\nThe narrative with the most amount of plot twists is The Adventures of Tom Sawyer, according to the abrupt changes in the plot’s sentimental value across the chapters.\n\n\nPlot number 2: Median sentimental score of each book grouped by the countries\nBlue: USA, Green: UK, red: Russia.\n\n\n\n\n\n\n\n\n\nLittle Women has the highest median sentimental score. It also means that the sentimental score of the plot of the narrative stays mostly at the same level, because the sentimental score doesn’t have sharp twists.\n\n\nPlot number 3: Median sentimental score of each authors (only 1-2 narratives included)\n\n\n\n\n\n\n\n\n\nLouisa May Alcott is the author with the highest median sentimental score.\n\n\nPlot number 4: Median sentimental score across the centuries in the countries\n\n\n\n\n\n\n\n\n\nUK is the country with the most sentimental difference during the centuries.\n\n\nConclusion\nThe narrative with the most amount of plot twists is The Adventures of Tom Sawyer, according to the abrupt changes in the plot’s sentimental value across the chapters.\nLittle Women has the highest median sentimental score. It also means that the sentimental score of the plot of the narrative stays mostly at the same level, because the sentimental score doesn’t have sharp twists.\nLouisa May Alcott is the author with the highest median sentimental score.\nUK is the country with the most sentimental difference during the centuries.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "oliver-twist.html",
+    "href": "oliver-twist.html",
+    "title": "Oliver Twist",
+    "section": "",
+    "text": "Plot 1: Average sentimental score for each non-neutral word in the narrative\nYou can see that there are words with both negative and positive sentimental score.\n\n\n\n\n\n\n\n\n\n\n\nPlot 2: Average sentimental score of each chapter\n\n\n\n\n\n\n\n\nPlot 3: Most used words by their sentimental value\n\n\n\n\n\n\n\n\n\nConclusion: This narrative is rich with different kinds of words and prosperous in its plot.",
+    "crumbs": [
+      "Home",
+      "United Kingdom",
+      "Charles Dickens",
+      "Oliver Twist"
+    ]
+  },
+  {
+    "objectID": "war-peace.html",
+    "href": "war-peace.html",
+    "title": "War and Peace",
+    "section": "",
+    "text": "Plot 1: Average sentimental score for each non-neutral word in the narrative\nYou can see that there are words with both negative and positive sentimental score.\n\n\n\n\n\n\n\n\n\n\n\nPlot 2: Average sentimental score of each chapter\n\n\n\n\n\n\n\n\nPlot 3: Most used words by their sentimental value\n\n\n\n\n\n\n\n\n\nConclusion: This narrative is rich with different kinds of words and prosperous in its plot.",
+    "crumbs": [
+      "Home",
+      "Russia",
+      "Leo Tolstoy",
+      "War and Peace"
     ]
   }
 ]

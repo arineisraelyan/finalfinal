@@ -57,7 +57,7 @@
     "href": "white-fang.html",
     "title": "White Fang",
     "section": "",
-    "text": "Plot 1: Average sentimental score for each non-neutral word in the narrative\nYou can see that there are words with both negative and positive sentimental score.\n\n\n\n\n\n\n\n\n\n\n\nPlot 2: Average sentimental score of each chapter\n\n\n\n\n\n\n\n\nPlot 3: Most used words by their sentimental value\n\n\n\n\n\n\n\n\n\nConclusion: This narrative is rich with different kinds of words and prosperous in its plot.",
+    "text": "Plot 1: Average sentimental score for each non-neutral word in the narrative\nYou can see that there are words with both negative and positive sentimental score.\n\n\n\n\n\n\n\n\n\n\n\nPlot 2: Average sentimental score of each chapter\n\n\n\n\n\n\n\n\nPlot 3: Most used words by their sentimental value\n\n\nWarning in comparison.cloud(., colors = c(\"#bd3e2f\", \"#769e6d\"), max.words =\n250): strongest could not be fit on page. It will not be plotted.\n\n\n\n\n\n\n\n\n\nConclusion: This narrative is rich with different kinds of words and prosperous in its plot.",
     "crumbs": [
       "Home",
       "United States",

@@ -2,4 +2,10 @@
 title: "About"
 ---
 
-About this site
+About me
+
+Wakey, wakey! I'm Ariné from Kapan, Armenia. 
+
+This website was created at Tumo Data Science workshop in April-May 2025.
+
+Here is my github: [https://github.com/arineisraelyan](https://github.com/arineisraelyan)

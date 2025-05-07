@@ -434,6 +434,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>The data for this website was created by me.</p>
+<p>Full-length texts of the books from: <a href="https://www.gutenberg.org/">https://www.gutenberg.org/</a></p>
+<p>Information about the authors and the narratives, like nationality, publishing years, etc. from Google.</p>
 
 
 
@@ -530,7 +533,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/arineisraelyan\.github\.io\/finalfinal\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

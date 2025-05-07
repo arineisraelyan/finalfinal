@@ -2,3 +2,8 @@
 title: "Sources"
 ---
 
+The data for this website was created by me. 
+
+Full-length texts of the books from: [https://www.gutenberg.org/](https://www.gutenberg.org/)
+
+Information about the authors and the narratives, like nationality, publishing years, etc. from Google.

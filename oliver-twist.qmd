@@ -61,6 +61,9 @@ word_sentiment_data_oliver_twist <- word_scores_oliver_twist %>%
   drop_na()
 ```
 
+# Plot 1: Average sentimental score for each non-neutral word in the narrative
+
+**You can see that there are words with both negative and positive sentimental score.**
 
 ```{r}
 #| message: false
@@ -97,6 +100,8 @@ chapter_sentiment_oliver_twist <- tidy_book_sentiment_oliver_twist %>%
     summarise(median_sentiment = median(value, na.rm = TRUE))
 ```
 
+# Plot 2: Average sentimental score of each chapter
+
 ```{r}
 #| message: false
 library(plotly)
@@ -113,6 +118,8 @@ p <- chapter_sentiment_oliver_twist %>%
 
 ggplotly(p)
 ```
+
+# Plot 3: Most used words by their sentimental value
 
 ```{r}
 #| message: false
@@ -147,4 +154,5 @@ chapter_sentiment_oliver_twist <- chapter_sentiment_oliver_twist %>%
 saveRDS(chapter_sentiment_oliver_twist, "data/chapter_sentiment_oliver_twist.rds")
 ```
 
-
+**Conclusion:**
+This narrative is rich with different kinds of words and prosperous in its plot.

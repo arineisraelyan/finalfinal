@@ -63,6 +63,9 @@ word_sentiment_data_murder <- word_scores_murder %>%
   drop_na()                                              
 ```
 
+# Plot 1: Average sentimental score for each non-neutral word in the narrative
+
+**You can see that there are words with both negative and positive sentimental score.**
 
 ```{r}
 #| message: false
@@ -95,6 +98,7 @@ chapter_sentiment_murder <- tidy_book_sentiment_murder %>%
     summarise(median_sentiment = median(value, na.rm = TRUE))
 ```
 
+# Plot 2: Average sentimental score of each chapter
 
 ```{r}
 #| message: false
@@ -111,6 +115,8 @@ p <- chapter_sentiment_murder %>%
 
 ggplotly(p)
 ```
+
+# Plot 3: Most used words by their sentimental value
 
 ```{r} 
 #| message: false
@@ -144,3 +150,5 @@ chapter_sentiment_murder <- chapter_sentiment_murder %>%
 saveRDS(chapter_sentiment_murder, "data/chapter_sentiment_murder.rds")
 ```
 
+**Conclusion:**
+This narrative is rich with different kinds of words and prosperous in its plot.

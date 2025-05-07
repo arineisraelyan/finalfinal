@@ -434,7 +434,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
+<p>About me</p>
+<p>Wakey, wakey! I’m Ariné from Kapan, Armenia.</p>
+<p>This website was created at Tumo Data Science workshop in April-May 2025.</p>
+<p>Here is my github: <a href="https://github.com/arineisraelyan">https://github.com/arineisraelyan</a></p>
 
 
 
@@ -531,7 +534,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/arineisraelyan\.github\.io\/finalfinal\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

@@ -64,6 +64,9 @@ word_sentiment_data_captain_daughter <- word_scores_captain_daughter %>%
                                                      
 ```
 
+# Plot 1: Average sentimental score for each non-neutral word in the narrative
+
+**You can see that there are words with both negative and positive sentimental score.**
 
 ```{r}
 #| message: false
@@ -99,6 +102,8 @@ chapter_sentiment_captain_daughter <- tidy_book_sentiment_captain_daughter %>%
     summarise(median_sentiment = median(value, na.rm = TRUE))
 ```
 
+# Plot 2: Average sentimental score of each chapter
+
 ```{r}
 #| message: false
 library(plotly)
@@ -114,6 +119,8 @@ p <- chapter_sentiment_captain_daughter %>%
 
 ggplotly(p)
 ```
+
+# Plot 3: Most used words by their sentimental value
 
 ```{r}
 #| message: false
@@ -147,3 +154,5 @@ chapter_sentiment_captain_daughter <- chapter_sentiment_captain_daughter %>%
 saveRDS(chapter_sentiment_captain_daughter, "data/chapter_sentiment_captain_daughter.rds")
 ```
 
+**Conclusion:**
+This narrative is rich with different kinds of words and prosperous in its plot.
